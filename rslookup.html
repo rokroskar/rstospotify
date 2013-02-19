@@ -3,6 +3,29 @@
 <link rel="stylesheet" type="text/css" href="rslookup.css">
 <body>
 <div class='body'>
+<h2>Radio &#352;tudent 89.3 MHz --&gt; Spotify</h2>
+
+<p>Zadnjih nekaj glasbenih oprem na izbiro / the last few setlists to choose from:</p>
+
+<?php
+
+include('simple_html_dom.php');
+$html = file_get_html('http://www.radiostudent.si/ostalo/glasbene-opreme');
+
+$res = $html->find('a');
+
+foreach($res as $a)
+  {
+    if (strpos($a->plaintext,'skladb') !== false)
+      echo "<a style='color:grey;' href='rslookup.php?urlname=http://www.radiostudent.si" . $a->href . "'>" . str_replace(array('č','Č','š','Š','ž','Ž'),array('&#269;','&#268;','&#353;','&#352;','&#382;','&#381;'),$a->plaintext) . "</a><br>";
+
+  }
+?>
+
+<br><br>Druga&#269;e pa / Otherwise:<br>
+
+
+
 <form action="rslookup.php" method="get">
 <ol>
 
