@@ -18,7 +18,11 @@ ob_end_flush();
 
 
 echo "<strong>Pulling tracks from <a href='" . $_GET["urlname"] . "'> the best radio in town</a></strong><br><br>";
+echo "<font id='found'>found</font>/<font id='notfound'>notfound</font>  (<font id='artist'>artist </font><font id='song'>song</font>)<br><br>";
+
 flush();
+
+
 
 $html = file_get_html($_GET["urlname"]);
  
@@ -31,22 +35,10 @@ foreach($html->find('div div div[class=field field-name-field-naslov-skladbe fie
       
 $i = 0;
 
-echo "<table>";
-echo "<tr>";
-echo "<th>track</th>";
-echo "<th>artist</th>";
-echo "<th>status</th>";
-echo "</tr>";
-
 foreach($html->find('div[class=field field-name-field-izvajalec-skladbe field-type-text field-label-hidden]') as $d)
   {
-    echo "<tr>";
     array_push($artists,$d->plaintext);
     $query[$i] = $query[$i] . "+" . str_replace(" ", "+", $d->plaintext);
-
-    echo "<td> " . $songnames[$i] . " </td>";
-    echo "<td> " . $artists[$i] . " </td>";
-    
     $res = file_get_html($query[$i]);
     $j = json_decode($res,true);
     
@@ -54,21 +46,22 @@ foreach($html->find('div[class=field field-name-field-izvajalec-skladbe field-ty
       {
         array_push($list,$j["tracks"][0]["href"]);
 #        echo $j["tracks"][0]["href"] . "<br>";
-        echo "<td class='found'> found! woohoo! </td>";
+        echo "<font id='found'>";
       }
     else
-      echo "<td class='notfound'>not found on spotify</td>";
+      echo "<font id='notfound'>";
 
+    echo 
+      "(<font id='artist'>" . $artists[$i] . "  </font>" .
+      "<font id='song'>" . $songnames[$i] . ")  </font></font>";
     $i++;
-    echo "</tr>";
   }
-echo "</table><br><br>";
 
-echo "number of total songs is " . count($songnames) . "<br>";
-echo "number of found songs is " . count($list) . "<br>";
+echo "<br><br>number of total songs: " . count($songnames) . "<br>";
+echo "number of found songs: " . count($list) . "<br>";
 
 echo "<br><br><h2>Spotify list</h2><br>";
-
+echo "copy/paste into a spotify playlist<br>";
 foreach($list as $d)
   echo $d . "<br>";
 
