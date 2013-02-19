@@ -3,7 +3,7 @@ width: 800px;
 position: relative;
 margin-left: -400px;
 left: 50%;
-font-family: 'Verdana';
+font-family: 'Courier';
 }
 a {color: grey; text-decoration: none}
 td {text-transform:lowercase;}
