@@ -64,10 +64,17 @@ foreach($html->find('div[class=field field-name-field-izvajalec-skladbe field-ty
 
 echo "<br><br><a href='rslookup.html'>&lt;--- back to search</a><br><br>";
 $title = substr($_GET["urlname"], 67);
-echo "(if you don't have Spotify installed, click on the <font id='found'>found</font> tracks above, otherwise use the player below)<br><br>";
+
+echo "<a href='http://open.spotify.com/trackset/".$title."/";
+
+foreach($list as $d)
+  echo substr($d,-22).",";
+
+echo "'>click for web player</a><br><br>";
+
+
 
 echo "<iframe src='https://embed.spotify.com/?uri=spotify:trackset:". $title .":";
-
 foreach($list as $d)
   echo ",".substr($d,-22);
 
