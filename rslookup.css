@@ -4,9 +4,9 @@ position: relative;
 margin-left: -400px;
 left: 50%;
 font-family: 'Courier';
-font-size: 15px;
+font-size: 12px;
 }
-a {color: grey; text-decoration: none}
+a {color: inherit; text-decoration: none}*/
 td {text-transform:lowercase;}
 td.found {color: green;}
 td.notfound {color: red;}
@@ -21,6 +21,7 @@ font-weight: bold;
 {
 text-transform:lowercase;
 }
+
 
 #found
 {

@@ -17,7 +17,7 @@ ob_implicit_flush(true);
 ob_end_flush();
 
 
-echo "<strong>Pulling tracks from <a href='" . $_GET["urlname"] . "'> the best radio in town</a></strong><br><br>";
+echo "<strong>Pulling tracks from <font style='color:grey;'><a href='" . $_GET["urlname"] . "'> the best radio in town - R&#352 89.3 MHz</a></font></strong><br><br>";
 echo "<font id='found'>found</font>/<font id='notfound'>notfound</font>  (<font id='artist'>artist </font><font id='song'>song</font>)<br><br>";
 
 flush();
@@ -44,26 +44,34 @@ foreach($html->find('div[class=field field-name-field-izvajalec-skladbe field-ty
     
     if(count($j["tracks"]) > 0)
       {
-        array_push($list,$j["tracks"][0]["href"]);
-#        echo $j["tracks"][0]["href"] . "<br>";
+        $found = true;
+        $track = $j["tracks"][0]["href"];
+        array_push($list,$track);
+
         echo "<font id='found'>";
+        echo "<a href='http://open.spotify.com/track/".
+          substr($track,-22)."'>";
       }
     else
-      echo "<font id='notfound'>";
-
+      {
+        $found = false;
+        echo "<font id='notfound'>";
+      }
     echo 
-      "(<font id='artist'>" . $artists[$i] . "  </font>" .
-      "<font id='song'>" . $songnames[$i] . ")  </font></font>";
+      "(<font id='artist'>" . $artists[$i] . "  </font>" . "<font id='song'>" . $songnames[$i] . ")  </font></font></a>";
     $i++;
   }
 
-echo "<br><br>number of total songs: " . count($songnames) . "<br>";
-echo "number of found songs: " . count($list) . "<br>";
+echo "<br><br><a href='rslookup.html'>&lt;--- back to search</a><br><br>";
+$title = substr($_GET["urlname"], 67);
+echo "(if you don't have Spotify installed, click on the <font id='found'>found</font> tracks above, otherwise use the player below)<br><br>";
 
-echo "<br><br><h2>Spotify list</h2><br>";
-echo "copy/paste into a spotify playlist<br><br>";
+echo "<iframe src='https://embed.spotify.com/?uri=spotify:trackset:". $title .":";
+
 foreach($list as $d)
-  echo $d . "<br>";
+  echo ",".substr($d,-22);
+
+echo "' frameborder='0' allowtransparency='true' width='300' height='380'></iframe>";
 
 
 ?>
