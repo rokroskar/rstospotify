@@ -10,3 +10,23 @@ td {text-transform:lowercase;}
 td.found {color: green;}
 td.notfound {color: red;}
 
+#artist
+{
+text-transform:uppercase;
+}
+
+#song
+{
+text-transform:lowercase;
+}
+
+#found
+{
+color: green;
+}
+
+#notfound
+{
+color: red;
+}
+
