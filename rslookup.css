@@ -1,0 +1,12 @@
+body {
+width: 800px;
+position: relative;
+margin-left: -400px;
+left: 50%;
+font-family: 'Verdana';
+}
+a {color: grey; text-decoration: none}
+td {text-transform:lowercase;}
+td.found {color: green;}
+td.notfound {color: red;}
+
