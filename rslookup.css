@@ -4,6 +4,7 @@ position: relative;
 margin-left: -400px;
 left: 50%;
 font-family: 'Courier';
+font-size: 15px;
 }
 a {color: grey; text-decoration: none}
 td {text-transform:lowercase;}

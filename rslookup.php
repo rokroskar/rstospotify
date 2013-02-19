@@ -61,7 +61,7 @@ echo "<br><br>number of total songs: " . count($songnames) . "<br>";
 echo "number of found songs: " . count($list) . "<br>";
 
 echo "<br><br><h2>Spotify list</h2><br>";
-echo "copy/paste into a spotify playlist<br>";
+echo "copy/paste into a spotify playlist<br><br>";
 foreach($list as $d)
   echo $d . "<br>";
 
