@@ -18,7 +18,11 @@ ob_end_flush();
 
 
 echo "<strong>Pulling tracks from <a href='" . $_GET["urlname"] . "'> the best radio in town</a></strong><br><br>";
+echo "<font id='found'>found</font>/<font id='notfound'>notfound</font>  (<font id='artist'>artist </font><font id='song'>song</font>)<br><br>";
+
 flush();
+
+
 
 $html = file_get_html($_GET["urlname"]);
  
@@ -42,22 +46,22 @@ foreach($html->find('div[class=field field-name-field-izvajalec-skladbe field-ty
       {
         array_push($list,$j["tracks"][0]["href"]);
 #        echo $j["tracks"][0]["href"] . "<br>";
-#        echo "<font id='found'>";
+        echo "<font id='found'>";
       }
     else
- #     echo "<font id='notfound'>";
+      echo "<font id='notfound'>";
 
     echo 
-      "<font class='body' id='artist'>" . $artists[$i] . "</font>" .
-      "<font class='body' id='song'>" . $songnames[$i] . "</font></font>";
+      "(<font id='artist'>" . $artists[$i] . "  </font>" .
+      "<font id='song'>" . $songnames[$i] . ")  </font></font>";
     $i++;
   }
 
-echo "number of total songs is " . count($songnames) . "<br>";
-echo "number of found songs is " . count($list) . "<br>";
+echo "<br><br>number of total songs: " . count($songnames) . "<br>";
+echo "number of found songs: " . count($list) . "<br>";
 
 echo "<br><br><h2>Spotify list</h2><br>";
-
+echo "copy/paste into a spotify playlist<br>";
 foreach($list as $d)
   echo $d . "<br>";
 

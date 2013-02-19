@@ -2,10 +2,9 @@
 <head>
 <link rel="stylesheet" type="text/css" href="rslookup.css">
 <body>
-<div class='body'>
+<div class='body'>0
 <form action="rslookup.php" method="get">
 <ol>
-
 <li> poglej si spisek <a href="http://www.radiostudent.si/ostalo/glasbene-opreme">glasbenih oprem /</a>
 check the <a href="http://www.radiostudent.si/ostalo/glasbene-opreme">collection of songlists</a></li>
 <li>klikni na &#382;eljen termin /

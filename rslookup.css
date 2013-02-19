@@ -3,7 +3,7 @@ width: 800px;
 position: relative;
 margin-left: -400px;
 left: 50%;
-font-family: 'Verdana';
+font-family: 'Courier';
 }
 a {color: grey; text-decoration: none}
 td {text-transform:lowercase;}
@@ -12,7 +12,8 @@ td.notfound {color: red;}
 
 #artist
 {
-text-transform:uppercase;
+text-transform:lowercase;
+font-weight: bold;
 }
 
 #song
