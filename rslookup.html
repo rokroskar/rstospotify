@@ -16,8 +16,8 @@ $res = $html->find('a');
 
 foreach($res as $a)
   {
-    if (strpos($a->plaintext,'skladb') !== false)
-      echo "<a style='color:grey;' href='rslookup.php?urlname=http://www.radiostudent.si" . $a->href . "'>" . str_replace(array('č','Č','š','Š','ž','Ž'),array('&#269;','&#268;','&#353;','&#352;','&#382;','&#381;'),$a->plaintext) . "</a><br>";
+   if (strpos(strtolower($a->plaintext),'skladb') !== false)
+      echo "<a style='color:grey;' href='rslookup.php?urlname=http://www.radiostudent.si" . $a->href . "'>" . str_replace(array('č','Č','š','Š','ž','Ž'),array('&#269;','&#268;','&#353;','&#352;','&#382;','&#381;'),strtolower($a->plaintext)) . "</a><br>";
 
   }
 ?>
